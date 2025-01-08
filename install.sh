@@ -5,6 +5,7 @@
 GIT_DIRERCTORY="$HOME/git"
 IS_FIRST_RUN="$HOME/.dotfiles_run"
 VAULT_SECRET="$HOME/.ansible-vault/vault.secret"
+DOT_CONFIG_DIR="$HOME/.config"
 DOTFILES_DIR="$GIT_DIRERCTORY/dotfiles"
 DOTFILES_LOG="$HOME/.dotfiles.log"
 
@@ -99,7 +100,7 @@ function _clear_task {
 function _task_done {
     printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
     _clear_task
-}
+
 # Function to decrypt a value using ansible-vault
 decrypt_value() {
     local encrypted_value=$1
@@ -206,7 +207,7 @@ _task_done
 # Clone repository
 if ! [[ -d "$DOTFILES_DIR" ]]; then
     _task "Cloning repository"
-        _cmd "git clone --quiet git@github.com:helto4real/dev_dotfiles.git $DOTFILES_DIR"
+        _cmd "git clone --quiet https://github.com/helto4real/dev_dotfiles.git $DOTFILES_DIR"
     _task_done
 else
     _task "Updating repository"
@@ -215,6 +216,17 @@ else
 fi
 
 pushd "$DOTFILES_DIR" 2>&1 > /dev/null
+
+if [ ! -d "$DOT_CONFIG_DIR" ]; then
+    mkdir -p "$DOT_CONFIG_DIR"
+fi
+
+# delete .bashrc if it exists
+if [ -f "$HOME/.bashrc" ]; then
+    _task "Removing .bashrc"
+        _cmd "rm $HOME/.bashrc"
+    _task_done
+fi
 
 ### 6. Stow all the dotfiles
 _task "Stowing .config dotfiles"
