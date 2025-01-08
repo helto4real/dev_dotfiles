@@ -244,9 +244,9 @@ for file in ./apps/*; do
     _task_done
 done
 
-_task "Setting up git remote to ssh one"
-    _cmd "git remote set-url origin git@github.com:helto4real/dev_dotfiles.git"
-_task_done
+# _task "Setting up git remote to ssh one"
+#     _cmd "git remote set-url origin git@github.com:helto4real/dev_dotfiles.git"
+# _task_done
 
 popd 2>&1 > /dev/null
 
