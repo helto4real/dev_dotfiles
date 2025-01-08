@@ -1,5 +1,4 @@
 #!/bin/bash
-. tasks
 # This script uses a combination of ansible and stow to
 # install and configure dotfiles on a new system.
 
@@ -7,6 +6,7 @@ GIT_DIRERCTORY="$HOME/git"
 IS_FIRST_RUN="$HOME/.dotfiles_run"
 VAULT_SECRET="$HOME/.ansible-vault/vault.secret"
 DOTFILES_DIR="$GIT_DIRERCTORY/dotfiles"
+DOTFILES_LOG="$HOME/.dotfiles.log"
 
 git_user_name="Tomas Hellström"
 git_user_email='$ANSIBLE_VAULT;1.1;AES256
@@ -23,6 +23,83 @@ git_user_signingkey='$ANSIBLE_VAULT;1.1;AES256
 3632316137303632390a336337313833623430653735313037323833373965663238653132326533
 37396637646562616565363961313661643265363666396534356266323664646239'
 
+# color codes
+RESTORE='\033[0m'
+NC='\033[0m'
+BLACK='\033[00;30m'
+RED='\033[00;31m'
+GREEN='\033[00;32m'
+YELLOW='\033[00;33m'
+BLUE='\033[00;34m'
+PURPLE='\033[00;35m'
+CYAN='\033[00;36m'
+SEA="\\033[38;5;49m"
+LIGHTGRAY='\033[00;37m'
+LBLACK='\033[01;30m'
+LRED='\033[01;31m'
+LGREEN='\033[01;32m'
+LYELLOW='\033[01;33m'
+LBLUE='\033[01;34m'
+LPURPLE='\033[01;35m'
+LCYAN='\033[01;36m'
+WHITE='\033[01;37m'
+OVERWRITE='\e[1A\e[K'
+
+#emoji codes
+CHECK_MARK="${GREEN}\xE2\x9C\x94${NC}"
+X_MARK="${RED}\xE2\x9C\x96${NC}"
+PIN="${RED}\xF0\x9F\x93\x8C${NC}"
+CLOCK="${GREEN}\xE2\x8C\x9B${NC}"
+ARROW="${SEA}\xE2\x96\xB6${NC}"
+BOOK="${RED}\xF0\x9F\x93\x8B${NC}"
+HOT="${ORANGE}\xF0\x9F\x94\xA5${NC}"
+WARNING="${RED}\xF0\x9F\x9A\xA8${NC}"
+RIGHT_ANGLE="${GREEN}\xE2\x88\x9F${NC}"
+
+
+# _header colorize the given argument with spacing
+function _task {
+    # if _task is called while a task was set, complete the previous
+    if [[ $TASK != "" ]]; then
+        printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
+    fi
+    # set new task title and print
+    TASK=$1
+    printf "${LBLACK} [ ]  ${TASK} \n${LRED}"
+}
+
+# _cmd performs commands with error checking
+function _cmd {
+    #create log if it doesn't exist
+    if ! [[ -f $DOTFILES_LOG ]]; then
+        touch $DOTFILES_LOG
+    fi
+    # empty conduro.log
+    > $DOTFILES_LOG
+    # hide stdout, on error we print and exit
+    if eval "$1" 1> /dev/null 2> $DOTFILES_LOG; then
+        return 0 # success
+    fi
+    # read error from log and add spacing
+    printf "${OVERWRITE}${LRED} [X]  ${TASK}${LRED}\n"
+    while read line; do
+        printf "      ${line}\n"
+    done < $DOTFILES_LOG
+    printf "\n"
+    # remove log file
+    rm $DOTFILES_LOG
+    # exit installation
+    exit 1
+}
+
+function _clear_task {
+    TASK=""
+}
+
+function _task_done {
+    printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
+    _clear_task
+}
 # Function to decrypt a value using ansible-vault
 decrypt_value() {
     local encrypted_value=$1
