@@ -134,9 +134,9 @@ if ! dpkg -s ansible >/dev/null 2>&1; then
         _cmd "sudo apt-add-repository -y universe"
         _cmd "sudo apt-get update"
         _cmd "sudo apt-get install -y ansible"
-        _cmd "sudo apt-get install python3-argcomplete"
+        _cmd "sudo apt-get install -y python3-argcomplete"
         _cmd "sudo activate-global-python-argcomplete3"
-        _cmd "sudo apt-get install libssl-dev"
+        _cmd "sudo apt-get install -y libssl-dev"
     _task_done
 fi
 ### 3. Install Python3 and Pip if not installed
