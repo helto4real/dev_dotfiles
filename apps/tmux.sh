@@ -21,7 +21,7 @@ curl -L https://github.com/tmux/tmux/releases/download/3.5a/tmux-3.5a.tar.gz -o 
 tar -xzf $temp_dir/tmux-3.5a.tar.gz -C $temp_dir
 
 # Change to the tmux directory
-cd $temp_dir/tmux-3.5a
+pushd "$temp_dir/tmux-3.5a" 2>&1 > /dev/null
 
 # Configure, make, and install
 ./configure
@@ -30,4 +30,5 @@ sudo make install
 
 # Clean up
 rm -rf $temp_dir
-cd $current_dir
+
+popd
