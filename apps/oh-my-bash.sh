@@ -17,7 +17,7 @@ pushd "$temp_dir" 2>&1 > /dev/null
 sudo chmod +x install.sh
 
 # copy the theme to the themes directory
-cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axit/axin.theme.sh
+cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
 
 # Configure, make, and install
 ./install.sh
