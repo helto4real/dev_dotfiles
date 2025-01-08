@@ -16,10 +16,14 @@ pushd "$temp_dir" 2>&1 > /dev/null
 # Make the install script executable
 sudo chmod +x install.sh
 
+# copy the theme to the themes directory
+cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axit/axin.theme.sh
+
 # Configure, make, and install
 ./install.sh
 
 # Clean up
 rm -rf $temp_dir
 
-popd
+# Cannot do popd because oh-my-bash changes the directory
+cd $DOTFILES_DIR
