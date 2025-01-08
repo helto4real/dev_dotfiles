@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NVIM_VERSION='0.10.3'
 sudo apt-get install -y \
     cmake \

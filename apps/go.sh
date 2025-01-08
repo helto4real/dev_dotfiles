@@ -1,3 +1,5 @@
+#!/bin/bash
+
 GOVERSION=1.23.4
 
 # return if go version is already installed

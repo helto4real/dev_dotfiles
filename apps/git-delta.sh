@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Create a temporary directory
 temp_dir=$(mktemp -d)
 

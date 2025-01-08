@@ -11,7 +11,7 @@ sudo apt-get install -y fd-find
 # get config dir from bat --config-dir
 FD_FILE=$(which fdfind)
 
-
+sudo mkdir -p $HOME/.local/bin
 # Create symlink to fd to $HOME/.local/bin
-ln -s $FD_FILE $HOME/.local/bin/fd
+sudo ln -s $FD_FILE $HOME/.local/bin/fd
 

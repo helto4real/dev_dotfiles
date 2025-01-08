@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Uninstall fzf if it was installed with apt
 if dpkg -s fzf >/dev/null 2>&1; then
     _task "Uninstalling fzf"
