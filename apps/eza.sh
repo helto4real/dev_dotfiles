@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # # check if /etc/apt/sources.list.d/eza.list exists
-if [ ! -d "/etc/apt/sources.list.d/eza.list" ]; then
+if [ ! -f "/etc/apt/sources.list.d/eza.list" ]; then
     # add gpg key https://raw.githubusercontent.com/eza-community/eza/main/deb.asc
     curl -fsSL https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /usr/share/keyrings/eza-archive-keyring.gpg
 
