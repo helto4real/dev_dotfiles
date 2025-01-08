@@ -13,8 +13,12 @@ curl -L https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/insta
 # Change to the temp directory
 pushd "$temp_dir" 2>&1 > /dev/null
 
+# Make the install script executable
+sudo chmod +x install.sh
+
 # Configure, make, and install
 ./install.sh
+
 # Clean up
 rm -rf $temp_dir
 
