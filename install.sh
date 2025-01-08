@@ -100,6 +100,7 @@ function _clear_task {
 function _task_done {
     printf "${OVERWRITE}${LGREEN} [✓]  ${LGREEN}${TASK}\n"
     _clear_task
+}
 
 # Function to decrypt a value using ansible-vault
 decrypt_value() {
@@ -140,8 +141,8 @@ if ! dpkg -s ansible >/dev/null 2>&1; then
         _cmd "sudo apt-get install -y libssl-dev"
     _task_done
 fi
-### 3. Install Python3 and Pip if not installed
 
+### 3. Install Python3 and Pip if not installed
 if ! dpkg -s python3 >/dev/null 2>&1; then
     _task "Installing Python3"
         _cmd "sudo apt-get install -y python3"
