@@ -122,7 +122,7 @@ set -e
 ### 1. Update the package list
 _task "Updating package list and install essential packages"
     _cmd "sudo apt-get update"
-    _cmd "sudo apt-get install git build-essential"
+    _cmd "sudo apt-get install -y git build-essential"
 _task_done
 
 ### 2. Install Ansible
