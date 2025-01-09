@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# Check if kubectl is installed
+if [ -x "$(command -v kubectl)" ]; then
+    # kubectl is already installed
+    return 0
+fi
+
 K8S_VERSION=$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)
 
 # Create a temporary directory

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if k9s is installed
+if [ -x "$(command -v k9s)" ]; then
+    # k9s is already installed
+    return 0
+fi
+
 # Create a temporary directory
 temp_dir=$(mktemp -d)
 
