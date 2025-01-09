@@ -7,5 +7,5 @@ if dpkg -s tmate >/dev/null 2>&1; then
 fi
 
 # Install sshfs
-sudp apt-get install -y tmate
+sudo apt-get install -y tmate
 
