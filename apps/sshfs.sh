@@ -7,5 +7,5 @@ if dpkg -s sshfs >/dev/null 2>&1; then
 fi
 
 # Install sshfs
-sudp apt-get install -y sshfs
+sudo apt-get install -y sshfs
 
