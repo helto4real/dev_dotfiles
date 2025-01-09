@@ -15,3 +15,8 @@ curl -L https://go.dev/dl/go${GOVERSION}.linux-amd64.tar.gz -o $temp_dir/go.tar.
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf $temp_dir/go.tar.gz
 # Clean up
 rm -rf $temp_dir
+
+# Install go required tools
+
+# Install sesh
+go install github.com/joshmedeski/sesh@latest
