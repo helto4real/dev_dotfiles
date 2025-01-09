@@ -31,6 +31,12 @@ sudo cp -f $temp_dir/kubectl /usr/local/bin/kubectl
 # Make kubectl executable
 sudo chmod +x /usr/local/bin/kubectl
 
+# Copy the configuration file to the user's home directory
+mkdir -p ~/.kube
+cp -i $DOTFILES_DIR/config/files/k8s/config $HOME/.kube/config
+# Use ansible to decrypt the file
+ansible-vault decrypt $HOME/.kube/config --vault-password-file $VAULT_SECRET
+
 # check if kubeconfig returns version and return error if not
 if ! kubectl version --client; then
     echo "kubectl version failed. Exiting..."
