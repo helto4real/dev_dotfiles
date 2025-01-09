@@ -25,9 +25,9 @@ git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 # ./install.sh --unattended
 #
 
-sudo mkdir -p $HOME/.oh-my-bash/themes/axin
+mkdir -p $HOME/.oh-my-bash/themes/axin
 # copy the theme to the themes directory
-sudo cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
+cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
 
 # # Clean up
 # rm -rf $temp_dir
