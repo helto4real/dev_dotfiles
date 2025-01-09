@@ -1,0 +1,4 @@
+[[session]]
+name = "NetDaemon 🚀"
+path = "~/git/netdaemon"
+startup_command = "~/.config/sesh/scripts/dev.sh"
