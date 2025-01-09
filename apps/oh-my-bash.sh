@@ -1,31 +1,36 @@
 #!/bin/bash
+# Check if oh-my-bash is already installed
+if [ -d "$HOME/.oh-my-bash" ]; then
+    # oh-my-bash is already installed
+    return 0
+fi
+# Manual installation through cloning the repo
+# since we do not want the installer to change the shell
+git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 
-# bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-# source <(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)
-
-# Create a temporary directory
-temp_dir=$(mktemp -d)
-
-# Download tmux
-curl -L https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -o $temp_dir/install.sh
-
-
-# Change to the temp directory
-pushd "$temp_dir" 2>&1 > /dev/null
-
-# Make the install script executable
-sudo chmod +x install.sh
-
-# Configure, make, and install
-./install.sh --unattended
-
+# # Create a temporary directory
+# temp_dir=$(mktemp -d)
+#
+# # Download repo from github
+# curl -L https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -o $temp_dir/install.sh
+#
+#
+# # Change to the temp directory
+# pushd "$temp_dir" 2>&1 > /dev/null
+#
+# # Make the install script executable
+# sudo chmod +x install.sh
+#
+# # Configure, make, and install
+# ./install.sh --unattended
+#
 
 sudo mkdir -p $HOME/.oh-my-bash/themes/axin
 # copy the theme to the themes directory
 sudo cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
 
-# Clean up
-rm -rf $temp_dir
-
-# Cannot do popd because oh-my-bash changes the directory
-cd $DOTFILES_DIR
+# # Clean up
+# rm -rf $temp_dir
+#
+# # Cannot do popd because oh-my-bash changes the directory
+# cd $DOTFILES_DIR

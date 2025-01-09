@@ -1,4 +1,9 @@
 #!/bin/bash
+# Check if delta is already installed
+if dpkg -s git-delta >/dev/null 2>&1; then
+    # delta is already installed
+    return 0
+fi
 
 # Create a temporary directory
 temp_dir=$(mktemp -d)

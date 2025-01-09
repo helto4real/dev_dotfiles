@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if eza is already installed
+if dpkg -s eza >/dev/null 2>&1; then
+    # eza is already installed
+    return 0
+fi
+
 # # check if /etc/apt/sources.list.d/eza.list exists
 if [ ! -f "/etc/apt/sources.list.d/eza.list" ]; then
     # add gpg key https://raw.githubusercontent.com/eza-community/eza/main/deb.asc

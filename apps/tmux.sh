@@ -1,5 +1,5 @@
 #!/bin/bash
-return 0
+
 # Check if tmux correct version is installed
 if [ "$(tmux -V | cut -c 6-)" == "3.5a" ]; then
     # tmux version 3.5a is already installed

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Check if bat is already installed
+if dpkg -s bat >/dev/null 2>&1; then
+    # bat is already installed
+    return 0
+fi
+
 # Create a temporary directory
 temp_dir=$(mktemp -d)
 
