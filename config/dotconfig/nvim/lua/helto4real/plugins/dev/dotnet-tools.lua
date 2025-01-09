@@ -1,5 +1,6 @@
 return {
-    dir = "~/git/dotnet-tools",
+    -- dir = "~/git/dotnet-tools",
+    "helto4real/dotnet-tools.vim",
     dependencieset = {
         "plenary.nvim",
     },
