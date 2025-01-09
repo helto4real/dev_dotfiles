@@ -18,5 +18,5 @@ rm -rf $temp_dir
 
 # Install go required tools
 
-# Install sesh
-go install github.com/joshmedeski/sesh@latest
+# Install sesh in a new shell
+bash -c "go install github.com/joshmedeski/sesh@latest"
