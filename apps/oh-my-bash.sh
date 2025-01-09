@@ -16,12 +16,13 @@ pushd "$temp_dir" 2>&1 > /dev/null
 # Make the install script executable
 sudo chmod +x install.sh
 
+# Configure, make, and install
+./install.sh --unattended
+
+
 sudo mkdir -p $HOME/.oh-my-bash/themes/axin
 # copy the theme to the themes directory
-cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
-
-# Configure, make, and install
-./install.sh
+sudo cp $DOTFILES_DIR/config/files/oh-my-bash/themes/axin.theme.sh $HOME/.oh-my-bash/themes/axin/axin.theme.sh
 
 # Clean up
 rm -rf $temp_dir
