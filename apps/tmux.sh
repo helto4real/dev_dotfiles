@@ -26,6 +26,17 @@ pushd "$temp_dir/tmux-3.5a" 2>&1 > /dev/null
 make
 sudo make install
 
+# Install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Activate the tmux plugin manager and install plugins
+tmux source $HOME/.config/tmux/tmux.conf
+tmux start-server
+tmux new-session -d
+sleep 1
+$HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
+tmux kill-server
+
 # Clean up
 rm -rf $temp_dir
 
