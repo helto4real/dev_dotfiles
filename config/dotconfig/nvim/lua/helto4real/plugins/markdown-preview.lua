@@ -2,7 +2,7 @@ vim.cmd('source ~/.config/nvim/lua/helto4real/plugins/md-preview.vim')
 
 return {
     "iamcco/markdown-preview.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && yarn install",
     init = function()

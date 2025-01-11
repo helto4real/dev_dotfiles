@@ -4,19 +4,30 @@ return {
     -- event = { "BufReadPre", "BufNewFile" },
     event = "VeryLazy",
     dependencies = {
-        { 'williamboman/mason.nvim',                   event = "VeryLazy" },
-        { 'williamboman/mason-lspconfig.nvim',         event = "VeryLazy" },
-        { 'saghen/blink.cmp',                          event = "VeryLazy" },
+        { 'williamboman/mason.nvim',           event = "VeryLazy" },
+        { 'williamboman/mason-lspconfig.nvim', event = "VeryLazy" },
+        { 'saghen/blink.cmp',                  event = "VeryLazy" },
         -- Show overloads for LSP
         -- { "Issafalcon/lsp-overloads.nvim",             event = "VeryLazy" },
         -- Useful status updates for LSP
-        { 'j-hui/fidget.nvim',                         event = "VeryLazy", tag = 'legacy', opts = {} },
+        { 'j-hui/fidget.nvim',                 event = "VeryLazy", tag = 'legacy', opts = {} },
         -- Additional lua configuration, makes nvim stuff amazing!
         -- { 'folke/neodev.nvim',                         event = "VeryLazy" },
+        {
+            "folke/lazydev.nvim",
+            ft = "lua", -- only load on lua files
+            opts = {
+                library = {
+                    -- See the configuration section for more details
+                    -- Load luvit types when the `vim.uv` word is found
+                    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                },
+            },
+        },
         { "williamboman/mason-lspconfig.nvim",         event = "VeryLazy" },
         { "WhoIsSethDaniel/mason-tool-installer.nvim", event = "VeryLazy" },
         -- { "jmederosalvarado/roslyn.nvim",              event = "VeryLazy" },
-        {   
+        {
             "seblj/roslyn.nvim",
             ft = "cs",
             opts = {
@@ -104,7 +115,7 @@ return {
 
                 --- Guard against servers without the signatureHelper capability
                 -- if client ~= nil and client.server_capabilities.signatureHelpProvider then
-                --     require('lsp-overloads').setup(client, 
+                --     require('lsp-overloads').setup(client,
                 --     {
                 --         ui = {
                 --             focusable = false,     -- Make the popup float focusable
@@ -125,14 +136,17 @@ return {
                 nmap('<leader>e', '<cmd>Trouble diagnostics toggle focus=false filter.buf=0<CR>', '[e]rrors')
                 nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
                 nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-                nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-                nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-                nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+                nmap('<leader>gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+                nmap('<leader>gi', vim.lsp.buf.implementation, '[I]mplementation')
+                nmap('<leader>gD', vim.lsp.buf.declaration, '[D]eclaration')
                 nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-                nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-                nmap('<leader>gs', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-                nmap('<leader>I', require('telescope.builtin').lsp_incoming_calls, '[I]ncoming calls')
+                nmap('<leader>fsw', require('fzf-lua').lsp_live_workspace_symbols, '[D]ocument')
+                nmap('<leader>fsd', require('fzf-lua').lsp_document_symbols, '[W]orkspace')
+                nmap('<leader>fc', require('fzf-lua').lsp_code_actions, '[C]ode [A]ctions')
+                nmap('<leader>fI', require('fzf-lua').lsp_incoming_calls, '[I]ncoming calls')
+                nmap('<leader>fi', require('fzf-lua').lsp_finder, 'F[i]der')
+                nmap('<leader>fr', require('fzf-lua').lsp_references, '[R]eferences')
+                nmap('<leader>ft', require('fzf-lua').lsp_typedefs, '[T]ype Definitions')
                 -- See `:help K` for why this keymap
                 nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
                 nmap('<leader>k', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -149,7 +163,7 @@ return {
                     vim.lsp.buf.format()
                 end, { desc = 'Format current buffer with LSP' })
 
-                nmap("<leader>cf", ":Format<CR>", "[C]ode [F]ormat the current buffer with LSP")
+                nmap("<leader>cf", ":Format<CR>", "[F]ormat")
                 -- quick fix naviagtion
                 --vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
                 --vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")

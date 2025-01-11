@@ -47,21 +47,6 @@ return {
                 desc = "(F)ind in (H)elp tags",
             },
             {
-                "<leader>fls",
-                function() require('fzf-lua').lsp_live_workspace_symbols({}) end,
-                desc = "(F)ind (L)sp (S)ymbols",
-            },
-            {
-                "<leader>flw",
-                function() require('fzf-lua').lsp_live_document_symbols({}) end,
-                desc = "(F)ind (L)sp (W)orkspace symbols",
-            },
-            {
-                "<leader>flc",
-                function() require('fzf-lua').lsp_code_actions({}) end,
-                desc = "(F)ind (L)sp (C)ode actions",
-            },
-            {
                 "<leader>fk",
                 function() require('fzf-lua').keymaps({}) end,
                 desc = "(F)ind (K)eymaps",

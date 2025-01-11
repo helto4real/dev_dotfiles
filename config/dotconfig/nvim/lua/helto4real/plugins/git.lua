@@ -25,89 +25,99 @@ return {
         end,
         keys = {
             {
-                "<leader>ghrb",
+                "<leader>cghrb",
                 "<cmd>Octo repo browser<CR>",
-                desc = "(G)it(H)ub (R)epo (B)rowser",
+                desc = "(B)rowser",
             },
             {
-                "<leader>ghrl",
+                "<leader>cghrl",
                 "<cmd>Octo repo list<CR>",
-                desc = "(G)it(H)ub (R)epo (L)ist",
+                desc = "(L)ist",
             },
             {
-                "<leader>ghrv",
+                "<leader>cghrv",
                 "<cmd>Octo repo view<CR>",
-                desc = "(G)it(H)ub (R)epo (V)iew",
+                desc = "(V)iew",
             },
             {
-                "<leader>ghil",
+                "<leader>cghil",
                 "<cmd>Octo issue list<CR>",
-                desc = "(G)it(H)ub (I)ssue (L)ist",
+                desc = "(L)ist",
             },
             {
-                "<leader>ghpl",
+                "<leader>cghib",
+                "<cmd>Octo issue list<CR>",
+                desc = "(B)rowser",
+            },
+            {
+                "<leader>cghic",
+                "<cmd>Octo issue list<CR>",
+                desc = "(C)reate",
+            },
+            {
+                "<leader>cghpl",
                 "<cmd>Octo pr list<CR>",
-                desc = "(G)it(H)ub (P)R (L)ist",
+                desc = "(L)ist",
             },
             {
-                "<leader>ghpn",
+                "<leader>cghpn",
                 "<cmd>Octo pr create<CR>",
-                desc = "(G)it(H)ub (P)R create(N)",
+                desc = "Create (N)ew",
             },
             {
-                "<leader>ghpc",
+                "<leader>cghpc",
                 "<cmd>Octo pr changes<CR>",
-                desc = "(G)it(H)ub (P)R (C)hanges",
+                desc = "(C)hanges",
             },
             {
-                "<leader>ghpb",
+                "<leader>cghpb",
                 "<cmd>Octo pr browser<CR>",
-                desc = "(G)it(H)ub (P)R (B)rowser",
+                desc = "Open in (B)rowser",
             },
             {
-                "<leader>ghph",
+                "<leader>cghph",
                 "<cmd>Octo pr checkout<CR>",
-                desc = "(G)it(H)ub (P)R c(H)echout",
+                desc = "c(H)ech out",
             },
             {
-                "<leader>ghpru",
-                "<cmd>Octo pr s(U)mit<CR>",
-                desc = "(G)it(H)ub (P)R s(U)ubmit",
+                "<leader>cghpu",
+                "<cmd>Octo pr submit<CR>",
+                desc = "S(U)ubmit",
             },
             {
-                "<leader>ghprs",
+                "<leader>cghprs",
                 "<cmd>Octo pr review start<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview (S)tart",
+                desc = "(S)tart",
             },
             {
-                "<leader>ghpre",
+                "<leader>cghprc",
                 "<cmd>Octo pr review checks<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview (C)hecks",
+                desc = "(C)hecks",
             },
             {
-                "<leader>ghprr",
+                "<leader>cghprr",
                 "<cmd>Octo pr review resume<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview (R)esume",
+                desc = "(R)esume",
             },
             {
-                "<leader>ghprm",
+                "<leader>cghprm",
                 "<cmd>Octo pr review comment<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview co(M)ent",
+                desc = "Co(M)ent",
             },
             {
-                "<leader>ghprx",
+                "<leader>cghprx",
                 "<cmd>Octo pr review close<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview close(X)",
+                desc = "Close(X)",
             },
             {
-                "<leader>ghprd",
+                "<leader>cghprd",
                 "<cmd>Octo pr review discard<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview (D)iscard",
+                desc = "(D)iscard",
             },
             {
-                "<leader>ghpro",
+                "<leader>cghpro",
                 "<cmd>Octo pr review commit<CR>",
-                desc = "(G)it(H)ub (P)R (R)eview c(O)mmit",
+                desc = "C(O)mmit",
             },
         },
     },
@@ -115,49 +125,49 @@ return {
         "NeogitOrg/neogit",
         keys = {
             {
-                "<leader>gg",
+                "<leader>cgg",
                 function()
                     require("neogit").open({ kind = "split" })
                 end,
                 desc = "(G)it Neo(g)it",
             },
             {
-                "<leader>gc",
+                "<leader>cgc",
                 function()
                     require("neogit").open({ "commit", "-a", kind = "split"})
                 end,
                 desc = "(G)it (C)ommit",
             },
             {
-                "<leader>gd",
+                "<leader>cgd",
                 function()
                     require("neogit").open({ "diff", kind = "split"})
                 end,
                 desc = "(G)it (D)iff",
             },
             {
-                "<leader>gp",
+                "<leader>cgp",
                 function()
                     require("neogit").open({ "push" })
                 end,
                 desc = "(G)it (P)ush",
             },
             {
-                "<leader>gw",
+                "<leader>cgw",
                 function()
                     require("neogit").open({ "worktree" })
                 end,
                 desc = "(G)it (W)orktree",
             },
             {
-                "<leader>gb",
+                "<leader>cgb",
                 function()
                     require("neogit").open({ "branch" })
                 end,
                 desc = "(G)it (B)ranch",
             },
             {
-                "<leader>gr",
+                "<leader>cgr",
                 function()
                     require("neogit").open({ "rebase" })
                 end,
