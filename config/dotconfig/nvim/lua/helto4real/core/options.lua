@@ -78,6 +78,9 @@ opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 
+-- enable conceallevel for markdown
+vim.opt.conceallevel = 1
+
 opt.backspace = "indent,eol,start"
 
 -- use line numbers
