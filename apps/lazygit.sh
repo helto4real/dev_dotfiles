@@ -13,7 +13,7 @@ temp_dir=$(mktemp -d)
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
 
 # Download lazygit to temporary directory
-curl -L lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -o $temp_dir/lazygit.tar.gz
+curl -L "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -o $temp_dir/lazygit.tar.gz
 # tar xf $temp_dir/lazygit.tar.gz -C $temp_dir/lazygi
 tar -xzf $temp_dir/lazygit.tar.gz -C $temp_dir
 
