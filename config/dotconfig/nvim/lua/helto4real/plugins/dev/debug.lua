@@ -45,9 +45,33 @@ return {
             -- Add your own debuggers here
             --'leoluz/nvim-dap-go',
         },
+
         config = function()
             local dap = require 'dap'
             local dapui = require 'dapui'
+
+                        -- adapter_path = "$HOME/.local/share/nvim/mason/bin/netcoredbg/netcoredbg",
+            -- handle dotnet debug
+            -- dap.adapters.netcoredbg = {
+            --     type = 'executable',
+            --     command = function()
+            --         return vim.fn.expand('~/.local/share/nvim/mason/bin/netcoredbg')
+            --     end,
+            --     -- args = { '--interpreter=vscode' },
+            -- }
+
+            -- dap.configurations.cs = {
+            --     {
+            --         name = 'Launch - netcoredbg',
+            --         type = 'coreclr',
+            --         request = 'launch',
+            --         program = function()
+            --             return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+            --         end,
+            --         cwd = '${workspaceFolder}',
+            --         stopOnEntry = false,
+            --     },
+            -- }
 
             -- vim.keymap.set('n', "<leader><F6>", function()
             --     if vim.bo.filetype ~= "rust" then
@@ -79,12 +103,12 @@ return {
             -- Basic debugging keymaps, feel free to change to your liking!
             vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
             vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-            vim.keymap.set('n', '<F10>', dap.step_over, { desc = 'Debug: Step Over' })
-            vim.keymap.set('n', '<F12>', dap.step_out, { desc = 'Debug: Step Out' })
+            vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
+            vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
             vim.keymap.set('n', '<F9>', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
             vim.keymap.set('n', '<leader>B', function()
                 dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-            end, { desc = 'Debug: Set Breakpoint' })
+            end, { desc = 'Debug: Set Breakpoint condition' })
 
             -- Dap UI setup
             -- For more information, see |:help nvim-dap-ui|

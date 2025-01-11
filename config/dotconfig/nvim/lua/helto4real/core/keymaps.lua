@@ -1,6 +1,5 @@
--- Ok VIM purists will bash me for this...
 vim.cmd('source ~/.config/nvim/lua/helto4real/core/keymaps.vim')
-print("Loading keymaps.lua")
+
 local keymap = vim.keymap --short
 
 local function map(mode, lhs, rhs, desc, opts)
@@ -68,12 +67,9 @@ map("i", "<C-c>", "<Esc>")
 map("n", "Q", "<nop>")
 map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
-map("n", "<leader>le", "<cmd>setlocal spell spelllang=en_us<CR>", "Enable spell checking en_us")
-map("n", "<leader>ls", "<cmd>setlocal spell spelllang=sv<CR>", "Enable spell checking sv")
-map("n", "<leader>ld", "<cmd>setlocal nospell<CR>", "Disable spell checking")
-
--- smart replacing the current word
-map("n", "<leader>vpp", "<cmd>e");
+map("n", "<leader>le", "<cmd>setlocal spell spelllang=en_us<CR>", "Spell check - [E]nglish")
+map("n", "<leader>ls", "<cmd>setlocal spell spelllang=sv<CR>", "Spell check - [S]wedish")
+map("n", "<leader>ld", "<cmd>setlocal nospell<CR>", "[D]isable spell checking")
 
 -- I know I miss those vscode c+s save thing
 map("n", "<C-s>", "<cmd>w<CR>")
@@ -83,12 +79,7 @@ map("n", "<C-k><C-k>", "0<C-v><leader>gc")
 
 map('t', '<esc>', [[<C-\><C-n>]])
 map('t', 'jk', [[<C-\><C-n>]])
--- Handle movement between windows
--- map('t', '<C-j>', [[<Cmd>wincmd h<CR>]])
--- map('t', '<C-k>', [[<Cmd>wincmd j<CR>]])
--- map('t', '<C-i>', [[<Cmd>wincmd k<CR>]])
--- map('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
--- map('t', '<C-w>', [[<C-\><C-n><C-w>]])
+
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")

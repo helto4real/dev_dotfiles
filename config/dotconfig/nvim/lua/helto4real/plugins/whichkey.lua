@@ -50,6 +50,7 @@ return {
         -- Document existing key chains
         spec = {
             { '<leader>c', group = '[C]ode',     mode = { 'n', 'x' } },
+            { '<leader>ct', group = '[T]est',     mode = { 'n', 'x' } },
             { '<leader>cgh', group = '[G]itub',     mode = { 'n', 'x' } },
             { '<leader>cc', group = '[C]opilot',     mode = { 'n', 'x' } },
             { '<leader>cghp', group = '[P]R',     mode = { 'n', 'x' } },
@@ -60,11 +61,16 @@ return {
             { '<leader>cd', group = '[D]otnet',     mode = { 'n', 'x' } },
             { '<leader>g', group = '[G]oto' },
             { '<leader>f', group = '[F]ind' },
+            { '<leader>m', group = '[M]arkdown/[M]ulti cursor' },
             { '<leader>fs', group = '[S]ymols' },
             { '<leader>fd', group = '[D]iagnostics' },
-
+            { '<leader>z', group = '[Z]en mode' },
             { '<leader>t', group = '[T]ab' },
-            { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+            { '<leader>w', group = '[W]indow' },
+            { '<leader>h', group = '[H]arpoon' },
+            { '<leader>l', group = '[L]anguage' },
+            { '<leader>o', group = '[O]bsidian' },
+            { '<leader>ol', group = '[L]ink' },
         },
     },
 }

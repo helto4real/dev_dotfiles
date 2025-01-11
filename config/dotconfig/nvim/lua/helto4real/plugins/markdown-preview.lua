@@ -16,7 +16,7 @@ return {
             "<leader>mp",
             mode = { "n" },
             "<cmd>MarkdownPreviewToggle<CR>",
-            { desc = "Markdown Preview toggle" }
+            desc = "Markdown Preview toggle"
         },
     },
 }
