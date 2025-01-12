@@ -8,7 +8,7 @@ return {
             function()
                 require("zen-mode").setup {
                     window = {
-                        width = 120,
+                        width = 150,
                         options = {}
                     },
                 }
@@ -17,7 +17,7 @@ return {
                 vim.wo.number = true
                 vim.wo.rnu = true
             end,
-            { desc = "Markdown Preview toggle" }
+            { desc = "Zen mode normal" }
         },
         {
             "<leader>zZ",
@@ -25,7 +25,7 @@ return {
             function()
                 require("zen-mode").setup {
                     window = {
-                        width = 120,
+                        width = 150,
                         options = {}
                     },
                 }
@@ -35,7 +35,7 @@ return {
                 vim.wo.rnu = false
                 vim.opt.colorcolumn = "0"
             end,
-            { desc = "Markdown Preview toggle" }
+            { desc = "Zem mode focus" }
         },
 
     },

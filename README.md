@@ -1,8 +1,8 @@
 # My Linux development machine setup
 
-This is my personal dev setup and dotfiles for WSL. It is a work in progress and will
-be updated as I go along.This setup is designed for a Linux development environment,
-using dotfiles and automation to configure various tools and settings.
+This is my personal dev setup and dotfiles for WSL. It is a work in progress
+and will be updated as I go along.This setup is designed for a Linux development
+environment, using dotfiles and automation to configure various tools and settings.
 
 The installation is driven by a bash script, install.sh, which sets up core
 development tools, tmux plugins, system utilities, and programming language support.

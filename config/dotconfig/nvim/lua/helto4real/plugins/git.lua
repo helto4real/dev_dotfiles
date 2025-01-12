@@ -123,25 +123,42 @@ return {
     },
     {
         "NeogitOrg/neogit",
+        opts = {
+            commit_editor = {
+                kind = "floating",
+                show_staged_diff = true,
+                -- Accepted values:
+                -- "split" to show the staged diff below the commit editor
+                -- "vsplit" to show it to the right
+                -- "split_above" Like :top split
+                -- "vsplit_left" like :vsplit, but open to the left
+                -- "auto" "vsplit" if window would have 80 cols, otherwise "split"
+                staged_diff_split_kind = "split",
+                spell_check = true,
+            },
+        },
         keys = {
             {
                 "<leader>cgg",
                 function()
-                    require("neogit").open({ kind = "split" })
+                    -- require("neogit").open({ kind = "split" })
+                    require("neogit").open({ kind = "floating" })
                 end,
                 desc = "(G)it Neo(g)it",
             },
             {
                 "<leader>cgc",
                 function()
-                    require("neogit").open({ "commit", "-a", kind = "split"})
+                    -- require("neogit").open({ "commit", "-a", kind = "split"})
+                    require("neogit").open({ "commit", "-a", kind = "floating" })
                 end,
                 desc = "(G)it (C)ommit",
             },
             {
                 "<leader>cgd",
                 function()
-                    require("neogit").open({ "diff", kind = "split"})
+                    -- require("neogit").open({ "diff", kind = "split"})
+                    require("neogit").open({ "diff", kind = "floating" })
                 end,
                 desc = "(G)it (D)iff",
             },
@@ -162,14 +179,14 @@ return {
             {
                 "<leader>cgb",
                 function()
-                    require("neogit").open({ "branch" })
+                    require("neogit").open({ "branch", kind = "floating" })
                 end,
                 desc = "(G)it (B)ranch",
             },
             {
                 "<leader>cgr",
                 function()
-                    require("neogit").open({ "rebase" })
+                    require("neogit").open({ "rebase", kind = "floating" })
                 end,
                 desc = "(G)it (R)ebase",
             },

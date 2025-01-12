@@ -213,7 +213,6 @@ return {
                 'gopls',
                 'jsonls',
                 'pyright',
-                'markdownlint',
                 -- 'roslyn',
                 -- 'rust_analyzer',
             },
@@ -223,7 +222,7 @@ return {
         -- install mason tools
         mason_tool_installer.setup({
             ensure_installed = {
-                "markdownlint", -- prettier formatter
+                -- "markdownlint", -- prettier formatter
             },
             automatic_installation = true,
         })
