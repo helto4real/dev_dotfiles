@@ -136,7 +136,7 @@ if ! dpkg -s ansible >/dev/null 2>&1; then
         _cmd "sudo apt-add-repository -y universe"
         _cmd "sudo apt-get update"
         _cmd "sudo apt-get install -y ansible"
-        _cmd "sudo apt-get install -y python3-argcomplete"
+        _cmd "sudo apt-get install -y python3-argcomplete python3-pynvim"
         _cmd "sudo activate-global-python-argcomplete"
         _cmd "sudo apt-get install -y libssl-dev"
     _task_done
@@ -151,6 +151,12 @@ fi
 if ! dpkg -s python3-pip >/dev/null 2>&1; then
     _task "Installing Python3 Pip"
         _cmd "sudo apt-get install -y python3-pip"
+    _task_done
+fi
+# Check if pyenv is installed by checking if the environment variable $PYENV_ROOT is set
+if [ -z "$PYENV_ROOT" ]; then
+    _task "Installing Pyenv"
+        _cmd "curl https://pyenv.run | bash"
     _task_done
 fi
 
