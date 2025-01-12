@@ -65,7 +65,6 @@ map("n", "<leader>Y", [["+Y]])
 map("i", "<C-c>", "<Esc>")
 
 map("n", "Q", "<nop>")
-map("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 map("n", "<leader>le", "<cmd>setlocal spell spelllang=en_us<CR>", "Spell check - [E]nglish")
 map("n", "<leader>ls", "<cmd>setlocal spell spelllang=sv<CR>", "Spell check - [S]wedish")
