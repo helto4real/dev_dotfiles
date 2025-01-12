@@ -6,6 +6,8 @@ return {
     dependencies = {
         { 'williamboman/mason.nvim',           event = "VeryLazy" },
         { 'williamboman/mason-lspconfig.nvim', event = "VeryLazy" },
+        { "mfussenegger/nvim-lint",            event = "VeryLazy" },
+        { "rshkarin/mason-nvim-lint",          event = "VeryLazy" },
         { 'saghen/blink.cmp',                  event = "VeryLazy" },
         -- Show overloads for LSP
         -- { "Issafalcon/lsp-overloads.nvim",             event = "VeryLazy" },
@@ -211,6 +213,7 @@ return {
                 'gopls',
                 'jsonls',
                 'pyright',
+                'markdownlint',
                 -- 'roslyn',
                 -- 'rust_analyzer',
             },
@@ -220,8 +223,9 @@ return {
         -- install mason tools
         mason_tool_installer.setup({
             ensure_installed = {
-                -- "prettier", -- prettier formatter
+                "markdownlint", -- prettier formatter
             },
+            automatic_installation = true,
         })
         local lspconfig = require("lspconfig")
 
