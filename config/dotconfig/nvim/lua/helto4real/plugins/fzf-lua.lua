@@ -3,76 +3,102 @@ return {
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
-    opts = {
-    },
-        keys = {
-            {
-                "<leader>ff",
-                function() require('fzf-lua').files({}) end,
-                desc = "(F)ind (f)iles",
+    config = function()
+        local fzf_lua = require('fzf-lua')
+        local actions = require('fzf-lua.actions')
+
+        fzf_lua.setup({
+            keymap  = {
+                builtin = {
+                    ["<F1>"]     = "toggle-help",
+                    ["<F2>"]     = "toggle-fullscreen",
+                    -- Only valid with the 'builtin' previewer
+                    ["<F3>"]     = "toggle-preview-wrap",
+                    ["<F4>"]     = "toggle-preview",
+                    ["<F5>"]     = "toggle-preview-ccw",
+                    ["<F6>"]     = "toggle-preview-cw",
+                    ["<C-d>"]    = "preview-page-down",
+                    ["<C-u>"]    = "preview-page-up",
+                    ["<S-left>"] = "preview-page-reset",
+                },
+                fzf = {
+                    ["ctrl-z"] = "abort",
+                    ["ctrl-f"] = "half-page-down",
+                    ["ctrl-b"] = "half-page-up",
+                    ["ctrl-a"] = "beginning-of-line",
+                    ["ctrl-e"] = "end-of-line",
+                    ["alt-a"]  = "toggle-all",
+                    -- Only valid with fzf previewers (bat/cat/git/etc)
+                    ["f3"]     = "toggle-preview-wrap",
+                    ["f4"]     = "toggle-preview",
+                    ["ctrl-d"] = "preview-page-down",
+                    ["ctrl-u"] = "preview-page-up",
+                    ["ctrl-q"] = "select-all+accept",
+                },
             },
-            {
-                "<leader>fr",
-                function() require('fzf-lua').live_grep_native({}) end,
-                desc = "(F)ind with (G)rep",
+            actions = {
+                files = {
+                    ["enter"]  = actions.file_edit_or_qf,
+                    ["ctrl-y"] = actions.file_edit_or_qf,
+                    ["ctrl-s"] = actions.file_vsplit,
+                    ["ctrl-v"] = actions.file_split,
+                    ["ctrl-t"] = actions.file_tabedit,
+                    ["alt-q"]  = actions.file_sel_to_qf,
+                    ["alt-l"]  = actions.file_sel_to_ll,
+                },
             },
-            {
-                "<leader><space>",
-                function() require('fzf-lua').buffers({}) end,
-                desc = "(F)ind open (space)Buffers",
-            },
-            {
-                "<leader>fg",
-                function() require('fzf-lua').git_files({}) end,
-                desc = "(F)ind with (G)it files",
-            },
-            {
-                "<leader>fdd",
-                function() require('fzf-lua').lsp_document_diagnostics({}) end,
-                desc = "(F)ind (D)iagnistics (D)ocument",
-            },
-            {
-                "<leader>fdw",
-                function() require('fzf-lua').lsp_workspace_diagnostics({}) end,
-                desc = "(F)ind (D)iagnistic (W)orkspace",
-            },
-            {
-                "<leader>fq",
-                function() require('fzf-lua').quickfix({}) end,
-                desc = "(F)ind in (Q)uickfix list",
-            },
-            {
-                "<leader>fh",
-                function() require('fzf-lua').helptags({}) end,
-                desc = "(F)ind in (H)elp tags",
-            },
-            {
-                "<leader>fk",
-                function() require('fzf-lua').keymaps({}) end,
-                desc = "(F)ind (K)eymaps",
-            },
-            {
-                "<leader>/",
-                function() require('fzf-lua').lgrep_curbuf({}) end,
-                desc = "Find fuzzy in current buffer",
-            },
+        })
+    end,
+    keys = {
+        {
+            "<leader>ff",
+            function() require('fzf-lua').files({}) end,
+            desc = "(F)ind (f)iles",
+        },
+        {
+            "<leader>fr",
+            function() require('fzf-lua').live_grep_native({}) end,
+            desc = "(F)ind with (G)rep",
+        },
+        {
+            "<leader><space>",
+            function() require('fzf-lua').buffers({}) end,
+            desc = "(F)ind open (space)Buffers",
+        },
+        {
+            "<leader>fg",
+            function() require('fzf-lua').git_files({}) end,
+            desc = "(F)ind with (G)it files",
+        },
+        {
+            "<leader>fdd",
+            function() require('fzf-lua').lsp_document_diagnostics({}) end,
+            desc = "(F)ind (D)iagnistics (D)ocument",
+        },
+        {
+            "<leader>fdw",
+            function() require('fzf-lua').lsp_workspace_diagnostics({}) end,
+            desc = "(F)ind (D)iagnistic (W)orkspace",
+        },
+        {
+            "<leader>fq",
+            function() require('fzf-lua').quickfix({}) end,
+            desc = "(F)ind in (Q)uickfix list",
+        },
+        {
+            "<leader>fh",
+            function() require('fzf-lua').helptags({}) end,
+            desc = "(F)ind in (H)elp tags",
+        },
+        {
+            "<leader>fk",
+            function() require('fzf-lua').keymaps({}) end,
+            desc = "(F)ind (K)eymaps",
+        },
+        {
+            "<leader>/",
+            function() require('fzf-lua').lgrep_curbuf({}) end,
+            desc = "Find fuzzy in current buffer",
+        },
     },
 }
-
---       keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
---         keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
---         keymap.set('n', '<leader>/', function()
---             -- You can pass additional configuration to telescope to change theme, layout, etc.
---             require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
---                 winblend = 10,
---                 previewer = false,
---             })
---         end, { desc = '[/] Fuzzily search in current buffer' })
---
---         keymap.set('n', '<leader>fg', require('telescope.builtin').git_files, { desc = 'Find [G]it files' })
---         keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[F]ind [F]iles' })
---         keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[F]ind [H]elp' })
---         keymap.set('n', '<leader>fw', require('telescope.builtin').grep_string, { desc = '[F]ind current [W]ord' })
---         keymap.set('n', '<leader>fr', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
---         keymap.set('n', '<leader>fd', require('telescope.builtin').diagnostics, { desc = '[F]ind [D]iagnostics' })
---         keymap.set('n', '<leader>fk', require('telescope.builtin').keymaps, { desc = '[F]ind [K]eymap' })

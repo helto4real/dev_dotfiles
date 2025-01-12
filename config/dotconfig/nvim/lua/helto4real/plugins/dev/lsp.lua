@@ -213,6 +213,7 @@ return {
                 'gopls',
                 'jsonls',
                 'pyright',
+                'bashls',
                 -- 'roslyn',
                 -- 'rust_analyzer',
             },
@@ -247,6 +248,11 @@ return {
             -- on_attach = on_attach,
         })
 
+        lspconfig["bashls"].setup({
+            capabilities = capabilities,
+            -- filetypes = { 'html', 'twig', 'hbs' },
+            -- on_attach = on_attach,
+        })
         -- configure lua server
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
