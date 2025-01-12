@@ -75,8 +75,6 @@ map("n", "<leader>ld", "<cmd>setlocal nospell<CR>", "[D]isable spell checking")
 map("n", "<C-s>", "<cmd>w<CR>")
 map("i", "<C-s>", "<Esc><cmd>w<CR>")
 
-map("n", "<C-k><C-k>", "0<C-v><leader>gc")
-
 map('t', '<esc>', [[<C-\><C-n>]])
 map('t', 'jk', [[<C-\><C-n>]])
 
