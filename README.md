@@ -85,7 +85,9 @@ including vim and neovim sessions.
 - tmux-yank: Enables copying highlighted text to the system clipboard.
 - tmux-sessionx: Provides fuzzy searching and management of tmux sessions.
 - tmux-sensible: Sets sensible default options for tmux.
-- tmux-tokyo-night: A theme for tmux, inspired by the Tokyo Night theme for Vim. It has configurable options for style, separators, and plugins like datetime, weather, and more.
+- tmux-tokyo-night: A theme for tmux, inspired by the Tokyo Night theme for Vim.
+It has configurable options for style, separators, and plugins like datetime,
+weather, and more.
 - tmux-pain-control: Provides mappings for moving between tmux panes and vim splits.
 - tmux-logging: Used for logging tmux sessions.
 - tmux-fzf: Provides various functionalities with fuzzy finding powered by fzf.

@@ -70,6 +70,11 @@ return {
                 desc = "Create [N]ew",
             },
             {
+                "<leader>cghpa",
+                "<cmd>Octo pr reload<CR>",
+                desc = "Relo[a]d",
+            },
+            {
                 "<leader>cghpc",
                 "<cmd>Octo pr changes<CR>",
                 desc = "[C]hanges",
