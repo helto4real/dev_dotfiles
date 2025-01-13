@@ -54,6 +54,8 @@ return {
             { '<leader>cgh', group = '[G]itub',     mode = { 'n', 'x' } },
             { '<leader>cc', group = '[C]opilot',     mode = { 'n', 'x' } },
             { '<leader>cghp', group = '[P]R',     mode = { 'n', 'x' } },
+            { '<leader>cghc', group = '[C]omment',     mode = { 'n', 'x' } },
+            { '<leader>cghl', group = '[L]abel',     mode = { 'n', 'x' } },
             { '<leader>cghpr', group = '[R]eview',     mode = { 'n', 'x' } },
             { '<leader>cghr', group = '[R]epo',     mode = { 'n', 'x' } },
             { '<leader>cghi', group = '[I]ssue',     mode = { 'n', 'x' } },

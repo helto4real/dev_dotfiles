@@ -78,6 +78,9 @@ opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 -- enable conceallevel for markdown
 vim.opt.conceallevel = 1
 

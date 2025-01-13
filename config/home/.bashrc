@@ -197,6 +197,13 @@ for file in $HOME/.config/bash_wsl/*.sh; do
   source "$file"
 done
 
+# check if secrets exists
+if [ -d $HOME/.config/secrets ]; then
+  for file in $HOME/.config/secrets/*.sh; do
+    source "$file"
+  done
+fi
+
 [ -f ~/.bash_lumen ] && source ~/.bash_lumen
 [ -f ~/.fzf.bash ]   && source ~/.fzf.bash
 
@@ -215,5 +222,7 @@ if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
   tmux new-session -A -s main
 fi
 . "$HOME/.cargo/env"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 toilet "Helto4Real" -F border:metal -f emboss2
