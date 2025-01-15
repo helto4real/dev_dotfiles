@@ -5,9 +5,9 @@ return {
     keys = {
             {
                 mode = { 'n' },
-                '<Leader>cr',
+                '<Leader>co',
                 '<cmd>Trouble<cr>',
-                desc = '[T]rouble',
+                desc = 'Tr[o]uble',
             },
     },
     opts = {

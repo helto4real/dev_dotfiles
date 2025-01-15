@@ -9,7 +9,7 @@ return {
             style = "night",
             transparent = false,
             on_colors = function(colors)
-                colors.bg = "#1f202e"
+                colors.bg = "#191a25"
             end
         })
         vim.cmd([[colorscheme tokyonight]])

@@ -1,34 +1,3 @@
--- local extension_path = vim.env.HOME .. '/.vscode-server/extensions/vadimcn.vscode-lldb-1.9.2/'
--- local codelldb_path = extension_path .. 'adapter/codelldb'
--- local liblldb_path = extension_path .. 'lldb/lib/liblldb'
--- local this_os = vim.loop.os_uname().sysname;
---
--- -- The path in windows is different
--- if this_os:find "Windows" then
---     codelldb_path = extension_path .. "adapter\\codelldb.exe"
---     liblldb_path = extension_path .. "lldb\\bin\\liblldb.dll"
--- else
---     -- The liblldb extension is .so for linux and .dylib for macOS
---     liblldb_path = liblldb_path .. (this_os == "Linux" and ".so" or ".dylib")
--- end
--- vim.g.rustaceanvim = {
---     dap = {
---         adapter = rt_dap.get_codelldb_adapter(
---             codelldb_path, liblldb_path)
---     },
--- }
--- RELOAD = function(...)
---     local ok, plenary_reload = pcall(require, "plenary.reload")
---     if ok then
---         reloader = plenary_reload.reload_module
---     end
---
---     return reloader(...)
--- end
--- R = function(name)
---     RELOAD(name)
---     return require(name)
--- end
 return {
     {
         'mfussenegger/nvim-dap',
